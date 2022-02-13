@@ -81,9 +81,20 @@ class MyProfile extends Component {
   }
 
   onGetProfileFailureView = () => (
-    <button onClick={this.retryProfileView()} type="button">
-      Try again
-    </button>
+    <div className="failure-button-container">
+      <img
+        src="https://res.cloudinary.com/aravindswamy534/image/upload/v1643906985/react%20insta%20share/Path_jibnx2.png"
+        alt="failure view"
+      />
+      <p>Something went wrong. Please try again</p>
+      <button
+        className="failure-button"
+        type="button"
+        onClick={this.retryProfileView}
+      >
+        Try again
+      </button>
+    </div>
   )
 
   renderDisplayedProfile = () => {

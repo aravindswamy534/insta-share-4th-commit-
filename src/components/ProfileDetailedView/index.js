@@ -34,7 +34,7 @@ const ProfileDetailedView = props => {
           </div>
           <div className="user-details-container">
             <div>
-              <h1 className="posts-heading">{postsCount} posts</h1>
+              <p>{postsCount} posts</p>
             </div>
             <div>
               <p>{followersCount} followers</p>
@@ -47,7 +47,7 @@ const ProfileDetailedView = props => {
             <p className="user-id">{userId}</p>
           </div>
           <div>
-            <p>{userBio}</p>
+            <p className="user-bio">{userBio}</p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ const ProfileDetailedView = props => {
       <hr className="border-line" />
       <div className="posts-container">
         <p>
-          <BsGrid3X3 /> Posts
+          <BsGrid3X3 className="grid" /> Posts
         </p>
       </div>
       <ul className="profile-posts-icon-container">
@@ -90,11 +90,11 @@ const ProfileDetailedView = props => {
             </li>
           ))
         ) : (
-          <div>
-            <p>
-              <BiCamera />
-            </p>
-            <h1>No Posts</h1>
+          <div className="no-post-container">
+            <div className="camera-background">
+              <BiCamera className="camera" />
+            </div>
+            <h1 className="no-posts">No Posts</h1>
           </div>
         )}
       </ul>

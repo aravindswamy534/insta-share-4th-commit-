@@ -20,10 +20,6 @@ class PostItem extends Component {
     const {postId, likesCount} = each
     this.setState(prevState => ({isClicked: !prevState.isClicked}))
     const {isClicked} = this.state
-    // const toggledAns = isClicked ? 'un_like' : 'like'
-    // userLikedDetails(toggledAns, postId)
-    // const {isClicked} = this.state
-    // const toggledAns = isClicked ? 'un_like' : 'like'
 
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/insta-share/posts/${postId}/like`
@@ -37,6 +33,7 @@ class PostItem extends Component {
     }
     const response = await fetch(apiUrl, requestOptions)
     const data = await response.json()
+    console.log(data.message)
   }
 
   render() {
@@ -57,40 +54,52 @@ class PostItem extends Component {
 
     return (
       <li className="post-container">
-        {searchInput !== '' && <h1>Search Results</h1>}
         <div className="profile-name-container">
-          <img
-            alt="post author profile"
-            className="profile-pic-icon"
-            src={profilePic}
-          />
-          <Link to={`/users/${userId}`}>
-            <span className="profile-name">{userName}</span>
+          <Link className="user-nav-redirect" to={`/users/${userId}`}>
+            <div>
+              <img
+                alt="post author profile"
+                className="profile-pic-icon"
+                src={profilePic}
+              />
+            </div>
+
+            <p className="profile-name">{userName}</p>
           </Link>
         </div>
         <img className="posted-image" src={postDetailsImageUrl} alt="post" />
-        <div className="icon-container">
-          <button
-            className="like-button"
-            onClick={this.toggleLikeFont}
-            type="button"
-          >
-            {isClicked ? (
-              <BsHeart testid="likeIcon" />
-            ) : (
-              <FcLike testid="unLikeIcon" />
-            )}
-          </button>
-          <FaRegComment className="message-icon" />
-          <BiShareAlt className="share-icon" />
-        </div>
-        <p>{likesCount} likes</p>
-        <p>{postDetailsCaption}</p>
-        {comments.map(each2 => (
-          <Comment each={each2} key={each2.userId} />
-        ))}
+        <div className="bottom-container">
+          <div className="icon-container">
+            <button
+              className="like-button"
+              onClick={this.toggleLikeFont}
+              type="button"
+            >
+              {isClicked ? (
+                <BsHeart testid="likeIcon" />
+              ) : (
+                <FcLike testid="unLikeIcon" />
+              )}
+            </button>
+            <button type="button">
+              <FaRegComment className="message-icon" />
+            </button>
+            <button type="button">
+              <BiShareAlt className="share-icon" />
+            </button>
+          </div>
+          {isClicked ? (
+            <p className="likes-count-para">{likesCount} likes</p>
+          ) : (
+            <p className="likes-count-para">{likesCount + 1} likes</p>
+          )}
+          <p>{postDetailsCaption}</p>
+          {comments.map(each2 => (
+            <Comment each={each2} key={each2.userId} />
+          ))}
 
-        <p>{createdAt}</p>
+          <p className="created-time">{createdAt}</p>
+        </div>
       </li>
     )
   }

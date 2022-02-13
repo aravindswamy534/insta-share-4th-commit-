@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom'
 import './index.css'
 
 const notFoundImage =
-  'https://assets.ccbp.in/frontend/react-js/jobby-app-not-found-img.png'
+  'https://res.cloudinary.com/aravindswamy534/image/upload/v1644596998/erroring_1_ybwoyn.png'
 
 const NotFound = props => {
   const navigateToHomeRoute = () => {

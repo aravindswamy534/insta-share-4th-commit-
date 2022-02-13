@@ -5,7 +5,7 @@ const Comment = props => {
   const {userName, comment} = each
   return (
     <p>
-      <span className="username-heading">{userName} : </span>
+      <span className="username-heading">{userName}:</span>
       {comment}
     </p>
   )

@@ -1,5 +1,6 @@
 import {BsGrid3X3} from 'react-icons/bs'
 import {BiCamera} from 'react-icons/bi'
+
 import './index.css'
 
 const MyProfileDetailedView = props => {
@@ -21,33 +22,21 @@ const MyProfileDetailedView = props => {
   return (
     <div className="profile-detailed-view-container">
       <div className="user-profile-detail-container">
-        <div>
+        <div className="user-profile-container">
           <img className="user-profile-pic" alt="my profile" src={profilePic} />
         </div>
-        <div>
-          <div>
-            <h1>{userName}</h1>
+        <div className="user-profile-container-2">
+          <h1>{userName}</h1>
+          <div className="details-container">
+            <p className="p">{postsCount} posts</p>
+            <p className="p">{followersCount} followers</p>
+            <p>{followingCount} following</p>
           </div>
-          <div className="user-details-container">
-            <div>
-              <h1 className="posts-heading">{postsCount} posts</h1>
-            </div>
-            <div>
-              <p>{followersCount} followers</p>
-            </div>
-            <div>
-              <p>{followingCount} following</p>
-            </div>
-          </div>
-          <div>
-            <p className="user-id">{userId}</p>
-          </div>
-          <div>
-            <p>{userBio}</p>
-          </div>
+
+          <p className="user-id">{userId}</p>
+          <p>{userBio}</p>
         </div>
       </div>
-
       <ul className="profile-stories-icon-container">
         {stories.length !== 0 ? (
           stories.map(each2 => (

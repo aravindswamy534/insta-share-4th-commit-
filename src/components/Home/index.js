@@ -115,11 +115,12 @@ class Home extends Component {
 
     return (
       <div>
-        <div className="post-container">
+        <ul className="post-container">
+          {searchInput !== '' && <h1>Search Results</h1>}
           {data.map(each => (
             <PostItem searchInput={searchInput} each={each} key={v4()} />
           ))}
-        </div>
+        </ul>
       </div>
     )
   }
@@ -142,10 +143,10 @@ class Home extends Component {
       <div>
         {searchInput === '' && (
           <ul className="story-container">
-            {instaStories.map(each => (
+            {/* {instaStories.map(each => (
               <InstaStories each={each} key={v4()} />
-            ))}
-            {/* <InstaStories instaStories={instaStories} /> */}
+            ))} */}
+            <InstaStories instaStories={instaStories} />
           </ul>
         )}
       </div>
@@ -159,8 +160,9 @@ class Home extends Component {
   onGetPostFailureView = () => (
     <div className="failure-button-container">
       <img
-        src="https://res.cloudinary.com/aravindswamy534/image/upload/v1643906985/react%20insta%20share/Path_jibnx2.png"
+        src="https://res.cloudinary.com/aravindswamy534/image/upload/v1644597236/somethingWentWrong_d6xob9.png"
         alt="failure view"
+        className="mobile-width"
       />
       <p>Something went wrong. Please try again</p>
       <button
@@ -176,8 +178,9 @@ class Home extends Component {
   onGetStoryFailureView = () => (
     <div className="failure-button-container">
       <img
-        src="https://res.cloudinary.com/aravindswamy534/image/upload/v1643906985/react%20insta%20share/Path_jibnx2.png"
+        src="https://res.cloudinary.com/aravindswamy534/image/upload/v1644597236/somethingWentWrong_d6xob9.png"
         alt="failure view"
+        className="mobile-width"
       />
       <p>Something went wrong. Please try again</p>
       <button
@@ -243,9 +246,9 @@ class Home extends Component {
     return (
       <div>
         <Header userEnteredSearchedValue={this.userEnteredSearchedValue} />
-
         {this.renderDisplayedStories()}
         {this.renderDisplayedPost()}
+
         <div>{this.renderEmptyView()}</div>
       </div>
     )

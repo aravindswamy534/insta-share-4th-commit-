@@ -55,7 +55,7 @@ class LoginForm extends Component {
       return <Redirect to="/" />
     }
     return (
-      <>
+      <div className="login-main-container">
         <div className="login-image">
           <img
             className="image-login-logo"
@@ -63,51 +63,56 @@ class LoginForm extends Component {
             alt="website login"
           />
         </div>
-        <form className="form-login" onSubmit={this.onSubmitLoginForm}>
-          <div>
-            <img
-              className="insta-icon"
-              alt="website logo"
-              src="https://res.cloudinary.com/aravindswamy534/image/upload/v1643547907/react%20insta%20share/Standard_Collection_8_mm8tng.png"
-            />
-            <h1 className="insta-share-heading">Insta Share</h1>
-          </div>
-          <div className="user-filed-container">
-            <div>
-              <label className="insta-share-username" htmlFor="username">
-                USERNAME
-              </label>
-              <br />
-              <input
-                className="insta-share-input-username"
-                type="text"
-                id="username"
-                value={username}
-                onChange={this.onGetUsername}
-                placeholder="username"
-              />
+        <div>
+          <form className="form-login" onSubmit={this.onSubmitLoginForm}>
+            <div className="mini-containers-Insta-heading">
+              <div>
+                <img
+                  className="insta-icon"
+                  alt="website logo"
+                  src="https://res.cloudinary.com/aravindswamy534/image/upload/v1643547907/react%20insta%20share/Standard_Collection_8_mm8tng.png"
+                />
+              </div>
+
+              <h1 className="insta-share-heading">Insta Share</h1>
             </div>
-            <div>
-              <label className="insta-share-password" htmlFor="password">
-                PASSWORD
-              </label>
-              <br />
-              <input
-                className="insta-share-input-password"
-                type="password"
-                onChange={this.onGetPassword}
-                placeholder="password"
-                id="password"
-                value={password}
-              />
+            <div className="user-filed-container">
+              <div>
+                <label className="insta-share-label" htmlFor="username">
+                  USERNAME
+                </label>
+                <br />
+                <input
+                  className="insta-share-input"
+                  type="text"
+                  id="username"
+                  value={username}
+                  onChange={this.onGetUsername}
+                  placeholder="username"
+                />
+              </div>
+              <div>
+                <label className="insta-share-label" htmlFor="password">
+                  PASSWORD
+                </label>
+                <br />
+                <input
+                  className="insta-share-input"
+                  type="password"
+                  onChange={this.onGetPassword}
+                  placeholder="password"
+                  id="password"
+                  value={password}
+                />
+              </div>
+              <button className="login-button" type="submit">
+                Login
+              </button>
+              {showSubmitError && <p className="error-message">*{errorMsg}</p>}
             </div>
-            <button className="login-button" type="submit">
-              Login
-            </button>
-            {showSubmitError && <p className="error-message">*{errorMsg}</p>}
-          </div>
-        </form>
-      </>
+          </form>
+        </div>
+      </div>
     )
   }
 }
